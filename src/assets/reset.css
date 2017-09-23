@@ -1,0 +1,22 @@
+/*全局css样式*/
+body, ul, li, a, p, h2, h3, textarea, button, input, select {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    font-family: "微软雅黑";
+    &:focus {
+        outline: none;
+    }
+}
+h2{
+    background-color: #eee;
+    margin: 0;
+    padding: 10px;
+    font-size: 16px;
+}
+body,html{
+    width: 100%;
+    height: 100%;
+}
