@@ -23,6 +23,16 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+//外部引入json文件
+// var appData = require('../data.json');
+ 
+// app.get('/api/city',function (req,res) {
+//   res.json({
+//     data:appData
+//   });
+// });
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

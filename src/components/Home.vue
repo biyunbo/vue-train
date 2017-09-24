@@ -17,14 +17,14 @@
       <div class="city">
         <div class="start">
           <div class="text">出发地</div>
-          <router-link class="city-z" to="/start"></router-link>
+          <router-link class="city-z" to="/start"> {{start}} </router-link>
         </div>
         <div class="end">
           <div class="text">到达地</div>
-          <router-link class="city-z" to="/end"></router-link>
+          <router-link class="city-z" to="/end"> {{end}} </router-link>
         </div>
       </div>
-      <my-button class='button' type="primary" size="large">查询</my-button>
+      <my-button class='button' type="primary" size="large" @click='getdata'>查询</my-button>
   </div>
 </template>
 
@@ -38,17 +38,15 @@ export default {
           pickerValue:new Date().toISOString().slice(0,10),
           startDate: new Date(),
           endDate: new Date('2020-1-1'),
-          date:'请选择日期',
-          value:'1'
       }
   },
   computed:mapState({
-    data: state => state.data.data,
+    start: state => state.start.zhan,
+    end: state => state.end.zhan,
+    date: state => state.date
   }),
   mounted(){
     //获取数据
-    this.$store.dispatch('getdata')
-    console.log(this.$refs.picker)
   },
   methods: {
     openPicker() {
@@ -63,7 +61,14 @@ export default {
           d = d < 10 ? ('0' + d) : d;
           return y + '-' + m + '-' + d;
       };
-      this.date = formatDate(date)
+      var date = formatDate(date)
+      this.$store.commit('DATE',date)
+      console.log(this.$store)
+    },
+    getdata(){
+      var {date,start,end} = this.$store.state
+      console.log(start)
+      this.$store.dispatch('getdata',{'date':date,'sz':start.zhan,'sm':start.ma,'ez':end.zhan,'em':end.ma})
     }
   },
   components:{
@@ -78,11 +83,12 @@ export default {
 
 <style scoped>
 .home{
-  padding-top: 70px;
   padding-left: 10px;
   padding-right: 10px;
+  height: 100%;
 }
 .dataname{
+  padding-top: 70px;
   width: 80%;
   height: 30px;
   text-align: center;

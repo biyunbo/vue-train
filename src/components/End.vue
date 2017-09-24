@@ -1,20 +1,46 @@
 <template>
-  <myHeader fixed title="到达地">
-    <router-link to="/" slot="left">
-      <my-button icon="back">返回</my-button>
-    </router-link>
-  </myHeader>
+  <div class="main">
+    <myHeader fixed title="到达地">
+      <router-link to="/" slot="left">
+        <my-button icon="back">返回</my-button>
+      </router-link>
+    </myHeader>
+    <my-index-list>
+        <my-index-section v-for="vall in az" :index='vall' :key='vall'>
+          <my-cell to='/' v-for='(key,val) in city[vall]' :title='val' :key='key' @click.native="getcity(key,val)" />
+        </my-index-section>
+    </my-index-list>
+  </div>
 </template>
 
 <script>
-import { Header,Button } from 'mint-ui';
-
+import { mapState } from 'vuex'
+import { Header,Button,IndexList, IndexSection,Cell } from 'mint-ui';
 export default {
-  name: 'end',
+  name: 'start',
+  data(){
+    return{
+      az:['A','B','C','D','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','S','Y','Z']
+    }
+  },
+  computed:mapState({
+    city: state => state.city,
+  }),
+  mounted(){
+    //获取数据
+  },
+  methods:{
+    getcity(key,val){
+      this.$store.commit('END',{zhan:val,ma:key})
+    }
+  },
   components:{
     //组件
     myHeader: Header,
-    myButton:Button
+    myButton:Button,
+    myIndexList:IndexList,
+    myIndexSection:IndexSection,
+    myCell:Cell
   }
 }
 </script>
