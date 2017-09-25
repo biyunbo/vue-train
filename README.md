@@ -1,27 +1,32 @@
 # vue-train
+基于vue + vue-router + vuex + mint-ui + vue-cli 的vue版，火车票查询
+> 一个火车票查询小项目，麻雀虽小，五脏俱全。
 
-> A Vue.js project
+api是[途牛网](http://m.tuniu.com/train/)上找的。
 
-## Build Setup
-
-``` bash
+## 下载
+```
+git clone https://github.com/biyunbo/vue-train.git
+cd vue-train
 # install dependencies
 npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 启动
+```
+npm run dev
+```
+
+## 模块
+```
+1.首页（日期选择）
+2.城市选择
+3.列表页
+```
+
+## 图片
+![截图](https://github.com/biyunbo/vue-train/raw/master/static/1.png)
+![截图](https://github.com/biyunbo/vue-train/raw/master/static/2.png)
+![截图](https://github.com/biyunbo/vue-train/raw/master/static/3.png)
+![截图](https://github.com/biyunbo/vue-train/raw/master/static/4.png)
+

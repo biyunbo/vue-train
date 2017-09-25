@@ -30,7 +30,7 @@
 
 <script>
 import { mapState } from 'vuex'
-import { DatetimePicker,Cell,Search,Header,Button } from 'mint-ui';
+import { DatetimePicker,Cell,Search,Header,Button,MessageBox  } from 'mint-ui';
 export default {
   name: 'home',
   data(){
@@ -67,8 +67,16 @@ export default {
     },
     getdata(){
       var {date,start,end} = this.$store.state
-      this.$router.push('/list')
-      this.$store.dispatch('getdata',{'departureCityCode':start.ma,'arrivalCityCode':end.ma,"departureCityName":start.zhan,"arrivalCityName":end.zhan,"departureDate":date})
+      if(date == '请选择日期'){
+        MessageBox('提示', '请选择日期');
+      }else if(start.zhan == ''){
+        MessageBox('提示', '请选择出发地');
+      }else if(end.zhan == ''){
+        MessageBox('提示', '请选择到达地');
+      }else{
+        this.$router.push('/list')
+        this.$store.dispatch('getdata',{'departureCityCode':start.ma,'arrivalCityCode':end.ma,"departureCityName":start.zhan,"arrivalCityName":end.zhan,"departureDate":date})
+      }
     }
   },
   components:{
@@ -76,7 +84,8 @@ export default {
     myDatetimePicker:DatetimePicker,
     myCell:Cell,
     myHeader: Header,
-    myButton:Button
+    myButton:Button,
+    MessageBox
   }
 }
 </script>
