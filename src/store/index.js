@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import instance from '../utils/instance'
 import axios from 'axios'
+import jsonp from 'jsonp'
 
 Vue.use(Vuex)
 
@@ -73,14 +74,16 @@ export default new Vuex.Store({
   },
   actions:{
   	getdata({commit},data){
-  		instance.get(`/station_200_2500?r=train/trainTicket/getTickets&primary[departureDate]=2017-09-24&primary[departureCityCode]=1903&primary[departureCityName]=鞍山&primary[arrivalCityCode]=200&primary[arrivalCityName]=北京`)
-  		.then(function(response){
-  			//console.log(response.data)
-  			commit("GET_DATA",response.data)
-  		})
-  		.catch(function(err){
-  			console.log(err)
-  		})
+      console.log(data)
+      instance.get(`/product/ticketList?d=%7B%22departureCityCode%22:%22${data.departureCityCode}%22,%22arrivalCityCode%22:%22${data.arrivalCityCode}%22,%22departureCityName%22:%22${data.departureCityName}%22,%22arrivalCityName%22:%22${data.arrivalCityName}%22,%22departureDate%22:%22${data.departureDate}%22%7D`)
+      .then(function(response){
+        console.log(response.data)
+        commit("GET_DATA",response.data)
+      })
+      .catch(function(err){
+        console.log(err)
+      })
+
   	},
   }
 })
@@ -88,7 +91,8 @@ export default new Vuex.Store({
 // getdata = function(cb){
 //     instance.get(`/topics?tab=job&page=1&limit=10`)
 //     .then(function(data){
-//         cb(data.data)
+//         cb(data.data)  /product/ticketList?d=%7B%22departureCityCode%22:%22${data.departureCityCode}%22,%22arrivalCityCode%22:%22${data.arrivalCityCode}%22,%22departureCityName%22:%22${data.departureCityName}%22,%22arrivalCityName%22:%22${data.arrivalCityName}%22,%22departureDate%22:%22${data.departureDate}%22%7D
+
 //     })
 
 // }

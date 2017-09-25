@@ -27,7 +27,17 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+        '/train': {
+            target: 'http://m.tuniu.com/api',
+            pathRewrite: {
+              '^/train': '/train'
+            },
+            changeOrigin: true
+          }
+        //"/station_200_2500":"http://huoche.tuniu.com"
+
+    },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

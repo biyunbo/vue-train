@@ -1,11 +1,11 @@
 <template>
   <div class="main">
-    <myHeader fixed title="出发地">
+    <my-header fixed title="出发地">
       <router-link to="/" slot="left">
         <my-button icon="back">返回</my-button>
       </router-link>
-    </myHeader>
-    <my-index-list>
+    </my-header>
+    <my-index-list class="indexlist">
         <my-index-section v-for="vall in az" :index='vall' :key='vall'>
           <my-cell to='/' v-for='(key,val) in city[vall]' :title='val' :key='key' @click.native="getcity(key,val)" />
         </my-index-section>
@@ -47,5 +47,12 @@ export default {
 </script>
 
 <style>
-
+.home{
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+}
+.indexlist{
+  padding-top: 40px;
+}
 </style>

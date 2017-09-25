@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="main">
     <myHeader fixed title="首页"></myHeader>
     <div class="dataname">出发日期</div>
     <li class="date" @click="openPicker">{{date}}</li>
@@ -67,8 +67,8 @@ export default {
     },
     getdata(){
       var {date,start,end} = this.$store.state
-      console.log(start)
-      this.$store.dispatch('getdata',{'date':date,'sz':start.zhan,'sm':start.ma,'ez':end.zhan,'em':end.ma})
+      this.$router.push('/list')
+      this.$store.dispatch('getdata',{'departureCityCode':start.ma,'arrivalCityCode':end.ma,"departureCityName":start.zhan,"arrivalCityName":end.zhan,"departureDate":date})
     }
   },
   components:{
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style scoped>
-.home{
+.main{
   padding-left: 10px;
   padding-right: 10px;
   height: 100%;
