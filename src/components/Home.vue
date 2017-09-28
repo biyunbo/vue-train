@@ -37,7 +37,7 @@ export default {
       return{
           pickerValue:new Date().toISOString().slice(0,10),
           startDate: new Date(),
-          endDate: new Date('2020-1-1'),
+          endDate: new Date('2020'),
       }
   },
   computed:mapState({
