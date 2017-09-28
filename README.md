@@ -4,6 +4,12 @@
 
 api是[途牛网](http://m.tuniu.com/train/)上找的。
 
+项目网站[vue-train](http://train.byb224.top)
+
+手机端扫描二维码
+
+![截图](https://github.com/biyunbo/vue-train/raw/master/static/train.png)
+
 ## 下载
 ```
 git clone https://github.com/biyunbo/vue-train.git
